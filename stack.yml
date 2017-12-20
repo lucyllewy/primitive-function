@@ -4,7 +4,7 @@ provider:
 
 functions:
   primitive:
-    lang: go
+    lang: Dockerfile
     handler: ./primitive
     image: diddledan/primitive
     environment:
