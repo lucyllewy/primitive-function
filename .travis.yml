@@ -14,10 +14,14 @@ before_install:
   - docker swarm init
   - ./ci-setup.sh
 
+script:
+  - go test $(go list ./... | grep -v /vendor/) -race -coverprofile=coverage.txt -covermode=atomic
+
 after_script:
   - docker swarm leave -f
 
 after_success:
+  - bash <(curl -s https://codecov.io/bash)
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
     docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
     faas-cli push -f stack.yml;

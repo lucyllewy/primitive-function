@@ -45,4 +45,4 @@ wait_for_service_to_start func_gateway
 faas-cli deploy -f stack.yml
 
 # wait for functions to become ready for testing
-wait_for_service_to_start echo
+wait_for_service_to_start primitive

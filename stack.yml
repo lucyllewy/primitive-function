@@ -4,8 +4,8 @@ provider:
 
 functions:
   primitive:
-    lang: Dockerfile
-    handler: ./primitive
+    lang: go
+    handler: ./function
     image: diddledan/primitive
     environment:
       read_timeout: 60
