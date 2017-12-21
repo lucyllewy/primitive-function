@@ -9,7 +9,7 @@ check_service_is_running() {
     else
       echo 0
     fi
-} 
+}
 
 # This function waits for the service to become available.
 # Retries for 10 times and 3 second interval (hard coded for now)
@@ -35,6 +35,9 @@ wait_for_service_to_start() {
 
 # deploy the stack to swarm
 ./deploy-stack.sh
+
+# ensure we use the latest templates
+faas-cli template pull https://github.com/openfaas/templates.git --overwrite
 
 # build the functions (assuming 4 cores)
 faas-cli build --parallel 4 -f stack.yml
